@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+<style>
+.flowers {
+    float: left;
+    margin: 5px;
+    padding: 15px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+} 
+.picture {
+	margin-left:250px;
+	margin-right:250px;
+	padding:0px;
+	text-align:center;
+	border:1px solid green;
+	border-radius:25px;
+	
+	
+	}
+	.img{
+		
+		border-image:round 1px;
+		
+		padding-bottom:20px;
+		}
+table {
+	text-align:center;
+	}
+
+</style>
+<link rel="stylesheet" href="css/style.css" />  
+<link rel="stylesheet" href="css/orange.css" />
+<!-- REVOLUTION BANNER CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="rs-plugin/css/revolution.css" media="screen" />
+<link rel="stylesheet" href="style-switcher/styleSwitcher.css" media="screen" />
+<link rel="stylesheet" href="css/jquery.bxslider.css">
+
+<!--bootstrap for responsive-->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+<title>Bloom Command - Smart Online Support</title>
+</head>
+
+<body>
+
+ <!-- style switcher start -->
+       
+	   
+        <section id="header-wrapper" class="clearfix" >
+            <!-- #header start -->
+            <header id="header" class="clearfix" style="margin-left:200px;">
+
+                <!-- #logo start -->
+                <section id="logo">
+                    <a href="index.php">
+                        <img width="600" src="img/logo.png" alt="logo" />
+                    </a>
+					
+					
+					
+				<br /><br /><br /><br />
+					
+                </section><!-- #logo end -->
+
+                
+            </header><!-- #header end -->
+              </section>
+<!--<pre>-->
+<div class="picture">
+<?php
+session_start();
+$servername = "localhost";
+$username = "whatabloom_ser1";
+$password = "xgvdMN1t63";
+$db="whatabloom_bcm";
+
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $db);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+	//echo "Connected successfully";
+	$_SESSION['invoice'] = $_POST['invoice'];
+	$invoice_no= $_SESSION['invoice'];
+	//$id =  $_POST['product_id'];
+	echo"<br>";
+	//print_r($invoice_no);
+	echo"<br>";
+
+	//print_r($id);
+	$sql = "SELECT o.invoice_id,o.order_id,o.db_id,o.order_record_id,o.order_date,p.product_picture,p.product_record_id,p.db_id,w.website_id,w.website_address FROM orders o JOIN products p ON o.order_id = p.product_record_id JOIN websites w ON p.db_id = w.website_id WHERE o.invoice_id = '$invoice_no'";
+	$result = mysqli_query($conn, $sql);
+	//print_r($result);
+	if (mysqli_num_rows($result) > 0) {
+		// output data of each row
+		?>
+		<?php
+  //echo "<table>";
+		 while($row = mysqli_fetch_assoc($result)) {
+			$id=$row['invoice_id'];
+			echo "<h3>DROP SHIP PROGRAMME</h3>";?>
+           
+<table width="600" border="1px solid black" class="table">
+  <tr>
+ 	<th>Order No</th>
+    <th>Invoice No</th>
+    <th>Product Image</th>
+    <th>Order Date</th>
+  </tr>
+  
+    <tr>
+        <td><?php echo $row['order_id'];?></td>
+        <td><?php echo $row['invoice_id'];?></td>
+        <td><img src ="<?php echo $row['website_address']?>/productres/<?php echo $row['product_picture'];?>" alt="no picture" width="80" height="80" class="img"/></td>
+        <td><?php echo $row['order_date'];?></td>
+  </tr><br />
+</table>
+
+		
+        <?php
+		    //echo "<tr>"."Order No:". $row['order_id']."-----------------"."Invoice No:".$id."-----------------"."Order Date:".$row['order_date']."</tr>"."<br>";
+			
+		
+		}
+		//echo"</table>";
+	} else {
+		echo "<br>"."0 results";
+	}
+
+mysqli_close($conn);
+
+/*$sql = "Select product_name from products";
+echo $sql;
+$result = mysql_query( $sql );
+echo $result;
+         /* if(mysql_num_rows($query) == 0)
+          {
+          echo "no result found";
+          }
+		echo "<table>";
+
+          echo "<thead></thead>";
+                while( $row = mysql_fetch_array( $query ) )
+                     {
+                      echo "<tr></tr>";
+                     }
+          echo "</table>";
+		  
+		  $recpsql = "Select product_name from products where product_code ='FNWP-117'";
+		  $recpquery = mysql_query( $recpsql,$conn );
+					  if(mysql_num_rows($recpquery) == 0)
+					  {
+					  echo "no result found";
+					  }
+					echo "<table>";
+			
+					  echo "<thead></thead>";
+							while( $row = mysql_fetch_array( $recpquery ) )
+								 {
+								  echo "<tr>".$row['product_name']."</tr>";
+								 }
+					  echo "</table>";*/
+					  
+		/*while ($line = mysql_fetch_array($result, MYSQL_ASSOC))
+		{ 
+		 echo "Product Name:"." ".$line["product_name"]."</br>";
+		 echo "<br>\n"; 
+		}*/
+		
+	/*if(isset($_GET['search'])) {
+$txt= $_GET['search'];
+$result = mysqli_query($conn,"SELECT * FROM products where product_code=" . $txt);
+echo "<table>";
+while($row = mysqli_fetch_array($result)) 
+{ 
+echo "<tr>"; 
+echo "<td>" . $row['product_name'] . "</td>" ."<br>"; 
+
+echo "</tr>"; 
+} 
+echo "</table>"; 
+}*/
+?>
+<!--</pre>-->
+</div>
+ <div style="margin-left:280px;margin-right:100px;clear:both;">
+           <section class="service-box" style="border-radius:25px 25px 0px 25px;">
+                     
+								<a href="index.php">
+									<i><img src ="img/home.png" height = "50px" width="50px"></i>
+									<h5>Home</h5>
+									
+								</a>
+                             	
+					 
+          </section>
+          
+       
+                 			
+		<section class="service-box" style="border-radius:25px 25px 0px 0px;">
+									
+									<a href="ordertracking.php">
+									<i><img src = "img/ship.png" height = "50px" width="50px" background= "none"></i>
+
+									<h5>Drop ship programme</h5>
+									</a>
+		</section>	
+						
+						
+			
+		<section class="service-box" style="border-radius:25px 25px 25px 0px;">
+									<a href="aboutus.php">
+									<i><img src = "img/about.png" height = "50px" width="50px"></i>
+
+									<h5>About Bloom Command</h5>
+									</a>
+		</section>
+        </div>
+        
+        <div style="margin-left:280px;margin-right:100px;clear:both;">
+        
+        <section class="service-box" style="border-radius:25px 0px 25px 25px;">
+									<a href="partnering.php">
+									<i><img src = "img/partnering.png" height = "50px" width="50px"></i>
+
+									<h5>Partnering with Bloom Command</h5>
+									</a>
+			</section>
+		   
+		   	<section class="service-box" style="border-radius:0px 0px 25px 25px;">
+									<a href="contactus.php">
+									<i><img src = "img/contact.png" height = "50px" width="50px" background= "none"></i>
+
+									<h5>Contact Us</h5>
+									</a>
+								</section>
+		   
+		     
+		   
+		   	
+			<section class="service-box" style="border-radius:0px 25px 25px 25px;">
+									<a href="support.php">
+									<i><img src="img/support.png" height = "50px" width="50px" background= "none"></i>
+
+									<h5>Support</h5>
+									</a>
+			</section>
+            </div>
+            <br /><br /><br />
+            <div style="clear:both;">
+            <section class="retailer visible-lg" id="top">
+        	<!--<div class="note-content">-->
+                <a href="#top" class="btn-scroll scrollPage"></a>
+               
+                <h2>We work with the world's best retailers and suppliers:</h2>
+                
+        	<!--</div>-->
+         
+			<div class="content">
+		
+		
+		
+		
+		<div id="makeMeScrollable">
+					<img src="images/metro.jpg" alt="metro" width="171" height="60">
+					<img src="images/costco.gif" alt="costco" width="168" height="60">
+					<img src="images/HBC.jpg" alt="scrollerlogo3" width="156" height="60">
+					<img src="images/staples.jpg" alt="staples" width="114" height="60">
+					<img src="images/westjet-logo1.jpg" alt="westjet" width="172" height="60">
+					<img src="images/whatabloom.png" alt="scrollerlogo_shop_nbc" width="156" height="60">
+					<img src="images/1800flowers.jpg" alt="scrollerlogo_sears" width="156" height="60">
+					<img src="images/memorialflowers.gif" alt="memorial flowers" width="156" height="60">
+					<img src="images/whatabasket.png" alt="memorial flowers" width="156" height="60">
+					<img src="images/metro.jpg" alt="metro" width="171" height="60">
+					<img src="images/costco.gif" alt="costco" width="168" height="60">
+					<img src="images/HBC.jpg" alt="scrollerlogo3" width="156" height="60">
+					<img src="images/staples.jpg" alt="staples" width="114" height="60">
+					<img src="images/westjet-logo1.jpg" alt="westjet" width="172" height="60">
+					<img src="images/whatabloom.png" alt="scrollerlogo_shop_nbc" width="156" height="60">
+					<img src="images/1800flowers.jpg" alt="scrollerlogo_sears" width="156" height="60">
+					<img src="images/memorialflowers.gif" alt="memorial flowers" width="156" height="60">
+					<img src="images/whatabasket.png" alt="memorial flowers" width="156" height="60"
+					
+				</div>
+				
+				<div class="gr gr-left">
+				</div>
+				<div class="gr gr-right">
+				</div>
+			
+		</div>
+		
+		
+		</section>
+        
+        
+  <script>
+            /* <![CDATA[ */
+            /* REVOLUTION SLIDER */
+            jQuery(document).ready(function() {
+                
+                if (jQuery.fn.cssOriginal!==undefined){
+                    // CHECK IF fn.css already extended
+                    jQuery.fn.css = jQuery.fn.cssOriginal;
+                }   
+ 
+                jQuery('.fullwidthbanner').revolution(
+                {    
+                    delay:5000,                                                
+                    startheight:420,                            
+                    startwidth:940,
+                            
+                    hideThumbs:200,
+                            
+                    thumbWidth:100,                            
+                    thumbHeight:50,
+                    thumbAmount:5,
+                            
+                    navigationType:"none",               
+                    navigationArrows:"verticalcentered",      
+                    navigationStyle:"round",               
+                                                        
+                    navigationHAlign:"right",             
+                    navigationVAlign:"top",                 
+                    navigationHOffset:0,
+                    navigationVOffset:20,
+                            
+                    soloArrowLeftHalign:"left",
+                    soloArrowLeftValign:"center",
+                    soloArrowLeftHOffset:20,
+                    soloArrowLeftVOffset:0,
+                            
+                    soloArrowRightHalign:"right",
+                    soloArrowRightValign:"center",
+                    soloArrowRightHOffset:20,
+                    soloArrowRightVOffset:0,
+                    touchenabled:"on",                      
+                    onHoverStop:"on",                        
+                            
+                    navOffsetHorizontal:0,
+                    navOffsetVertical:20,
+                            
+                    hideCaptionAtLimit:0,
+                    hideAllCaptionAtLilmit:0,
+                    hideSliderAtLimit:0,
+                            
+                    stopAtSlide:-1,
+                    stopAfterLoops:-1,
+                            
+                    shadow:1,
+                    fullWidth: "on"                                       
+                }); 
+            });
+            
+            /* TWEETSCROLL */
+            $('.tweets-list-container').tweetscroll({
+                username: 'pixel_industry', 
+                limit: 20, 
+                replies: true, 
+                position: 'append',
+                animation: 'fade',
+                visible_tweets: 2
+            });
+            /* ]]> */
+        </script>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="js/jquery.smoothdivscroll-1.3-min.js"></script> 
+		<script src="js/jquery.mousewheel.min.js"> </script>
+		<script src="js/kinetic.js"></script> 
+<script src="js/jquery.bxslider.min.js"></script> 
+<script src="js/plugins.js"></script> 
+<script src="js/main.js"></script>
+ <script  src="style-switcher/styleSwitcher.js"></script><!-- Style Switcher plugin -->
+</body>
+</html>

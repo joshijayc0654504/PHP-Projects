@@ -1,0 +1,31 @@
+body{width: 1000px; height:870px; margin:0px auto; background-image: url(../images/BK.jpg) ; background-repeat:no-repeat; background-position:center right ; font-family:"Segoe UI Symbol"; color:#0000; size:11px;}
+pre{ font-family:"Segoe UI Symbol";}
+
+#container{ width:1000px; height:200px; margin:0 auto; font-family:"Segoe UI Symbol"}
+#container1{ width:960px; margin:0 auto; font-family:"Segoe UI Symbol"}
+#field{ text-align:left;}
+#field label{ width:180px; display:inline-block;}
+#field2{ text-align:right start;}
+#field3{ text-align:left;}
+
+.inputbox{ width:150px; border:1px inset #003333; background:#FFFFFF;}
+
+
+.inputbox2{ width:80px; background:#999999; bborder-color:#333333; border:thin; }
+
+.Red { color:#FF0000;}
+.log{background-position:left;}
+
+
+------------> Contain Page
+
+#header{background:#00FF00; width:"15%";}
+
+#content{background:#FFCC33; width:1000px ; height:800px;}
+	#content-left{background:#666666; width:300px; height:800px; float:left;}
+	
+	#content-right{background:#FFFFFF; width:700px; height:800px; float:left; }
+		
+#footer{background:#333333; width:1000px; height:60px;}
+
+#field label{ width:200px; display:inline-block; font-size:20px; color:#000000;text-transform:capitalize }

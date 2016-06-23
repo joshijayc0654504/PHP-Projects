@@ -1,0 +1,27 @@
+
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+section, header{
+	display: block;
+}
+/* General Demo Style */
+
+.clr{
+	clear: both;
+}

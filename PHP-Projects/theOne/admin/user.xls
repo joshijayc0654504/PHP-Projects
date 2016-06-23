@@ -1,0 +1,9 @@
+uid	fname	mname	lname	gender	dob	photo	email	phone	address	city	state	country	occupation	experience	basicskillset	password	status	created	formated	utype	
+1	Jay		Joshi		0000-00-00		j.joshi@gmail.com									123	2	2013-12-18 11:54:55	0000-00-00 00:00:00	1
+2	pinakin	s	patel	Male	1990-11-14	Flowers.jpg	pinakinpatel@gmail.com	9999999999	junagadh	Rajkot	Gujarat	india	Business	Fresher	basicskillset	1234	1	2013-12-18 11:57:27	0000-00-00 00:00:00	2
+3	jay		joshi		0000-00-00		jay.joshi@gmail.com									123	1	2014-01-16 21:26:58	0000-00-00 00:00:00	1
+4	Pinakin	S	Mavani	Male	1990-11-14	Pinakin.jpg	pinakinpatel@yahoo.com	9408948440	Jnd	Junagadh	Gujarat	India	Others	Fresher	basicskillset	123	1	2014-02-06 15:18:14	0000-00-00 00:00:00	2
+5	Megha M		Joshi		0000-00-00		mj@yahoo.com									6f8f57715090da2632453988d9a1501b	1	2014-02-06 15:39:15	0000-00-00 00:00:00	3
+6	A	B	C		2000-01-11		abc@gmail.com	a		-	-	a	-	-	basicskillset	a	1	2014-02-07 12:34:44	0000-00-00 00:00:00	2
+7	Abc	aa	aa	Male	1111-01-11	Logo Title.jpg	aa@gmail.com	12345678	JND	Rajkot	Gujarat	India	Business	Fresher	Programer	123	1	2014-02-07 17:06:30	0000-00-00 00:00:00	2
+8	dgd		dgd		0000-00-00		bddd@fggg.com									asdfgh	1	2014-03-09 21:47:54	0000-00-00 00:00:00	3
